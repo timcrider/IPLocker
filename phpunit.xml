@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit backupGlobals="false"
+		 backupStaticAttributes="false"
+		 bootstrap="./tests/config.php"
+		 convertErrorsToExceptions="true"
+		 convertNoticesToExceptions="true"
+		 convertWarningsToExceptions="true"
+		 processIsolation="false"
+		 stopOnFailure="false"
+		 syntaxCheck="true"
+		 strict="true"
+		 colors="true">
+	<testsuites>
+		<testsuite name="IPLocker Test Suite">
+			<directory suffix="Test.php">./tests</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<blacklist>
+			<file>./tests/config.php</file>
+			<file>*Interface.php</file>
+			<directory>./tests</directory>
+		</blacklist>
+		<whitelist addUncoveredFilesFromWhitelist="true">
+			<directory>./src/IPLocker</directory>
+		</whitelist>
+	</filter>
+</phpunit>
