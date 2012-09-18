@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);	
+ini_set('display_errors','On');
+
 /**
  * Setup our environment
  */
@@ -32,4 +35,9 @@ function autoload($className) {
 
 spl_autoload_register('autoload');
 
-require_once BASEDIR.'config/configuration.php';
+if (file_exists(BASEDIR.'config/configuration.php')) {
+	require_once BASEDIR.'config/configuration.php';
+} else {
+	print "Unable to load configuration: ".BASEDIR.'config/configuration.php';
+	exit;
+}
