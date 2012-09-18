@@ -146,9 +146,9 @@ class LockerTest extends PHPUnit_Framework_TestCase {
 	*
 	*/
 	public function testFailServiceTrapConditional() {
-		$mock = $this->mockRequest;
+		$mock         = $this->mockRequest;
 		$mock['Body'] = "+ ip 127.0.0.1x";
-		$this->assertFalse($this->locker->service($mock));
+		$this->assertNotNull($this->locker->service($mock));
 	}
 	
 	/**
@@ -233,22 +233,22 @@ class LockerTest extends PHPUnit_Framework_TestCase {
 
 		$mockRequest['Body'] = "+ admin 5551231234 Test User";
 		$result = $this->locker->exec(new \IPLocker\Command($mockRequest['Body']));
-		$this->assertTrue($result);
+		$this->assertTrue($result['Status']);
 
 		chmod($this->adminFile, 0000);
 		$result = $this->locker->exec(new \IPLocker\Command($mockRequest['Body']));
-		$this->assertFalse($result);
+		$this->assertFalse($result['Status']);
 
 		$result = $this->locker->exec(new \IPLocker\COmmand("- admin 5551231234"));
-		$this->assertFalse($result);
+		$this->assertFalse($result['Status']);
 
 		chmod($this->adminFile, 0600);
 
 		$result = $this->locker->exec(new \IPLocker\Command("- admin 5551231234"));
-		$this->assertTrue($result);
+		$this->assertTrue($result['Status']);
 
 		$result = $this->locker->exec(new \IPLocker\Command("- admin 5551231234"));
-		$this->assertTrue($result);
+		$this->assertTrue($result['Status']);
 
 	}
 
@@ -260,18 +260,18 @@ class LockerTest extends PHPUnit_Framework_TestCase {
 
 		$mockRequest['Body'] = "+ ip {$this->ip}";
 		$result = $this->locker->exec(new \IPLocker\Command($mockRequest['Body']));
-		$this->assertTrue($result);
+		$this->assertTrue($result['Status']);
 
 		$mockRequest['Body'] = "{$this->ip}";
 		$result = $this->locker->exec(new \IPLocker\Command($mockRequest['Body']));
-		$this->assertTrue($result);
+		$this->assertTrue($result['Status']);
 
 		chmod($this->ipFile, 0000);
 		$result = $this->locker->exec(new \IPLocker\Command("- ip {$this->ip}"));
-		$this->assertFalse($result);
+		$this->assertFalse($result['Status']);
 
 		$result = $this->locker->exec(new \IPLocker\Command("+ ip {$this->ip}"));
-		$this->assertFalse($result);
+		$this->assertFalse($result['Status']);
 		chmod($this->ipFile, 0600);
 
 	}
@@ -301,20 +301,20 @@ class LockerTest extends PHPUnit_Framework_TestCase {
 		$mockRequest['Body'] = '127.0.0.1';
 
 		$result = $this->locker->service($mockRequest);
-		$this->assertTrue($result);
+		$this->assertNotNull($result);
 
 		$result = $this->locker->service(new \IPLocker\Command("- slip slide"));
-		$this->assertFalse($result);
+		$this->assertNotNull($result);
 		
 		$tmpRequest = $mockRequest;
 		unset($tmpRequest['AccountSid']);
 		$this->locker->service($tmpRequest);
-		$this->assertFalse($result);
+		$this->assertNotNull($result);
 	
 		$tmpRequest = $mockRequest;
 		unset($tmpRequest['From']);
 		$result = $this->locker->service($tmpRequest);
-		$this->assertFalse($result);
+		$this->assertNotNull($result);
 
 	}
 	

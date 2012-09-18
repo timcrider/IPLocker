@@ -71,6 +71,7 @@ if (!defined('BASEDIR')) {
 			  <li><a href="setup.php">Setup</a></li>
 			  <li><a href="list-viewer.php">List Viewer</a></li>
 			  <li><a href="examples.php">Examples</a></li>
+			  <li><a href="coverage/" target="_blank">Unit Test Coverage</a></li>
 
               <li class="nav-header">Resources</li>
               <li><a href="http://github.com/" target="_blank">Github</a></li>
@@ -84,7 +85,7 @@ if (!defined('BASEDIR')) {
         </div><!--/span-->
 
         <div class="span10">
-<?php if (IPLOCK_AUTH) : ?>
+<?php if (defined('IPLOCK_AUTH') && IPLOCK_AUTH) : ?>
 			<div class="hero-unit success">
 			    <h1>Access Granted</h1>
 			    <p>Your IP <strong><?=\IPLocker\Helpers::realIP()?></strong> has been granted access by IPLocker</p>

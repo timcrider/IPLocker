@@ -34,7 +34,7 @@ class Json implements \IPLocker\AdminStore\StorageInterface
 	public function __construct($adminFile, $create=false) {
 		$this->adminFile = $adminFile;
 		
-		if ($create) {
+		if ($create && !file_exists($adminFile)) {
 			$this->resetData();
 		}
 		
@@ -204,8 +204,14 @@ class Json implements \IPLocker\AdminStore\StorageInterface
 	public function exec(\IPLocker\Command $command) {
 		$com = $command->fetchCommand();
 		
-        return ($com['action'] == 'create') ? 
-        	$this->create($com['params'][0], $com['params'][1]) :
-            $this->delete($com['params'][0]);
+        if ($com['action'] == 'create')  {
+        	return ($this->create($com['params'][0], $com['params'][1])) ?
+        		array('Status' => true, 'Message' => "Successfully added admin: {$com['params'][0]} ({$com['params'][1]})") :
+        		array('Status' => false, 'Message' => "Error adding: {$com['params'][0]} ({$com['params'][1]}");
+        } else {
+        	return ($this->delete($com['params'][0])) ?
+        		array('Status' => true, 'Message' => "Successfully removed admin: {$com['params'][0]}") :
+        		array('Status' => false, 'Message' => "Failed to remove admin: {$com['params'][0]}");
+        }
 	}
 }

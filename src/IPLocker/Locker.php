@@ -15,7 +15,7 @@ class Locker
 	/**
 	 * @var string $version Current version of IPLocker
 	 */
-	protected $version = '0.0.6';
+	protected $version = '0.0.7';
 
 	/**
 	 * @var Services_Twilio $twilio Instance of Twilio service api
@@ -173,7 +173,7 @@ class Locker
 	 	$type = $command->fetchCommand('type');
 	 	
 	 	if (!empty($this->$type) && is_callable(array($this->$type, 'exec'))) {
-	 		return (bool)$this->$type->exec($command);
+	 		return $this->$type->exec($command);
 	 	} else {
 	 		return false;
 	 	}
@@ -193,26 +193,23 @@ class Locker
 	 */
 	 public function service($data) {
 	 	if (!is_array($data) || empty($data['Body'])) {
-	 		$this->respond("Invalid Request");
-	 		return false;
+	 		return $this->respond("Invalid Request");
 	 	}
 	 	
 	 	if ((empty($data['AccountSid']) && !empty($this->twilioSid)) || $data['AccountSid'] != $this->twilioSid) {
-			$this->respond("Unable to authenticate Twilio service");
-	 		return false;
+			return $this->respond("Unable to authenticate Twilio service");
 	 	}
 	 	
 	 	if (empty($data['From']) || !$this->admin->isAdmin($data['From'])) {
-	 		$this->respond("Request Rejected");
-	 		return false;
+	 		return $this->respond("Request Rejected");
 	 	}
 	 	
-	 	if ($this->exec(new \IPLocker\Command($data['Body']))) {
-			$this->respond("Success");
-			return true;	 	
+	 	$response = $this->exec(new \IPLocker\Command($data['Body']));
+	 	
+	 	if (!empty($response['Status'])) {
+			return $this->respond($response['Message']);
 	 	} else {
-	 		$this->respond("Fail");
-	 		return false;
+	 		return $this->respond("Fail");
 	 	}
 	 }
 

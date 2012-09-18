@@ -38,6 +38,6 @@ spl_autoload_register('autoload');
 if (file_exists(BASEDIR.'config/configuration.php')) {
 	require_once BASEDIR.'config/configuration.php';
 } else {
-	print "Unable to load configuration: ".BASEDIR.'config/configuration.php';
+	require_once BASEDIR.'html/noconfig.php';
 	exit;
 }

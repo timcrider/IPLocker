@@ -20,7 +20,7 @@
           <table cellpadding="1" border="0" width="100%">
             <tr>
               <td class="headerItem" width="20%">Current file:</td>
-              <td class="headerValue" width="80%"><a href="index.html">/home/tcrider/projects/IPLocker/src/IPLocker</a>/<a href="Locker.php.html">Locker.php</a></td>
+              <td class="headerValue" width="80%"><a href="index.html">/home/tcrider/projects/dyn.timcrider.com/ipl1/src/IPLocker</a>/<a href="Locker.php.html">Locker.php</a></td>
             </tr>
             <tr>
               <td class="legendItem" width="20%">Legend:</td>
@@ -76,7 +76,7 @@
             </div>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">50 / 50</td>
+          <td class="coverNumHi">46 / 46</td>
         </tr>
 
         <tr>
@@ -102,7 +102,7 @@
             </div>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">50 / 50</td>
+          <td class="coverNumHi">46 / 46</td>
         </tr>
 
         <tr>
@@ -349,11 +349,11 @@
               </div>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">14 / 14</td>
+          <td class="coverNumHi">10 / 10</td>
         </tr>
 
         <tr>
-          <td class="coverFile" colspan="4">&nbsp;<a href="#222">fetchErrors()</a></td>
+          <td class="coverFile" colspan="4">&nbsp;<a href="#219">fetchErrors()</a></td>
           <td class="coverBar">
             <div class="coverBarOutline" title="100.00%">
                 <div class="size chameleon"  style="width:100%" title="100.00%"></div>
@@ -401,7 +401,7 @@
 <span class="lineNum" id="container15"><a name="15"></a><a href="#15" id="line15">      15</a> </span>                :     /**                                                                                                            
 <span class="lineNum" id="container16"><a name="16"></a><a href="#16" id="line16">      16</a> </span>                :      * @var string $version Current version of IPLocker                                                            
 <span class="lineNum" id="container17"><a name="17"></a><a href="#17" id="line17">      17</a> </span>                :      */                                                                                                            
-<span class="lineNum" id="container18"><a name="18"></a><a href="#18" id="line18">      18</a> </span>                :     protected $version = '0.0.5';                                                                                  
+<span class="lineNum" id="container18"><a name="18"></a><a href="#18" id="line18">      18</a> </span>                :     protected $version = '0.0.7';                                                                                  
 <span class="lineNum" id="container19"><a name="19"></a><a href="#19" id="line19">      19</a> </span>                :                                                                                                                    
 <span class="lineNum" id="container20"><a name="20"></a><a href="#20" id="line20">      20</a> </span>                :     /**                                                                                                            
 <span class="lineNum" id="container21"><a name="21"></a><a href="#21" id="line21">      21</a> </span>                :      * @var Services_Twilio $twilio Instance of Twilio service api                                                 
@@ -559,7 +559,7 @@
 <span class="lineNum" id="container173"><a name="173"></a><a href="#173" id="line173">     173</a> </span><span class="lineCov">              4 :          $type = $command-&gt;fetchCommand('type');                                                                   </span>
 <span class="lineNum" id="container174"><a name="174"></a><a href="#174" id="line174">     174</a> </span>                :                                                                                                                    
 <span class="lineNum" id="container175"><a name="175"></a><a href="#175" id="line175">     175</a> </span><span class="lineCov">              4 :          if (!empty($this-&gt;$type) &amp;&amp; is_callable(array($this-&gt;$type, 'exec'))) {                                   </span>
-<span class="lineNum" id="container176"><a name="176"></a><a href="#176" id="line176">     176</a> </span><span class="lineCov">              3 :              return (bool)$this-&gt;$type-&gt;exec($command);                                                            </span>
+<span class="lineNum" id="container176"><a name="176"></a><a href="#176" id="line176">     176</a> </span><span class="lineCov">              3 :              return $this-&gt;$type-&gt;exec($command);                                                                  </span>
 <span class="lineNum" id="container177"><a name="177"></a><a href="#177" id="line177">     177</a> </span>                :          } else {                                                                                                  
 <span class="lineNum" id="container178"><a name="178"></a><a href="#178" id="line178">     178</a> </span><span class="lineCov">              1 :              return false;                                                                                         </span>
 <span class="lineNum" id="container179"><a name="179"></a><a href="#179" id="line179">     179</a> </span>                :          }                                                                                                         
@@ -579,37 +579,34 @@
 <span class="lineNum" id="container193"><a name="193"></a><a href="#193" id="line193">     193</a> </span>                :      */                                                                                                            
 <span class="lineNum" id="container194"><a name="194"></a><a href="#194" id="line194">     194</a> </span>                :      public function service($data) {                                                                              
 <span class="lineNum" id="container195"><a name="195"></a><a href="#195" id="line195">     195</a> </span><span class="lineCov">              2 :          if (!is_array($data) || empty($data['Body'])) {                                                           </span>
-<span class="lineNum" id="container196"><a name="196"></a><a href="#196" id="line196">     196</a> </span><span class="lineCov">              1 :              $this-&gt;respond(&quot;Invalid Request&quot;);                                                                    </span>
-<span class="lineNum" id="container197"><a name="197"></a><a href="#197" id="line197">     197</a> </span><span class="lineCov">              1 :              return false;                                                                                         </span>
-<span class="lineNum" id="container198"><a name="198"></a><a href="#198" id="line198">     198</a> </span>                :          }                                                                                                         
-<span class="lineNum" id="container199"><a name="199"></a><a href="#199" id="line199">     199</a> </span>                :                                                                                                                    
-<span class="lineNum" id="container200"><a name="200"></a><a href="#200" id="line200">     200</a> </span><span class="lineCov">              2 :          if ((empty($data['AccountSid']) &amp;&amp; !empty($this-&gt;twilioSid)) || $data['AccountSid'] != $this-&gt;twilioSid) {</span>
-<span class="lineNum" id="container201"><a name="201"></a><a href="#201" id="line201">     201</a> </span><span class="lineCov">              1 :             $this-&gt;respond(&quot;Unable to authenticate Twilio service&quot;);                                               </span>
-<span class="lineNum" id="container202"><a name="202"></a><a href="#202" id="line202">     202</a> </span><span class="lineCov">              1 :              return false;                                                                                         </span>
-<span class="lineNum" id="container203"><a name="203"></a><a href="#203" id="line203">     203</a> </span>                :          }                                                                                                         
-<span class="lineNum" id="container204"><a name="204"></a><a href="#204" id="line204">     204</a> </span>                :                                                                                                                    
-<span class="lineNum" id="container205"><a name="205"></a><a href="#205" id="line205">     205</a> </span><span class="lineCov">              2 :          if (empty($data['From']) || !$this-&gt;admin-&gt;isAdmin($data['From'])) {                                      </span>
-<span class="lineNum" id="container206"><a name="206"></a><a href="#206" id="line206">     206</a> </span><span class="lineCov">              1 :              $this-&gt;respond(&quot;Request Rejected&quot;);                                                                   </span>
-<span class="lineNum" id="container207"><a name="207"></a><a href="#207" id="line207">     207</a> </span><span class="lineCov">              1 :              return false;                                                                                         </span>
-<span class="lineNum" id="container208"><a name="208"></a><a href="#208" id="line208">     208</a> </span>                :          }                                                                                                         
-<span class="lineNum" id="container209"><a name="209"></a><a href="#209" id="line209">     209</a> </span>                :                                                                                                                    
-<span class="lineNum" id="container210"><a name="210"></a><a href="#210" id="line210">     210</a> </span><span class="lineCov">              2 :          if ($this-&gt;exec(new \IPLocker\Command($data['Body']))) {                                                  </span>
-<span class="lineNum" id="container211"><a name="211"></a><a href="#211" id="line211">     211</a> </span><span class="lineCov">              1 :             $this-&gt;respond(&quot;Success&quot;);                                                                             </span>
-<span class="lineNum" id="container212"><a name="212"></a><a href="#212" id="line212">     212</a> </span><span class="lineCov">              1 :             return true;                                                                                           </span>
-<span class="lineNum" id="container213"><a name="213"></a><a href="#213" id="line213">     213</a> </span>                :          } else {                                                                                                  
-<span class="lineNum" id="container214"><a name="214"></a><a href="#214" id="line214">     214</a> </span><span class="lineCov">              1 :              $this-&gt;respond(&quot;Fail&quot;);                                                                               </span>
-<span class="lineNum" id="container215"><a name="215"></a><a href="#215" id="line215">     215</a> </span><span class="lineCov">              1 :              return false;                                                                                         </span>
-<span class="lineNum" id="container216"><a name="216"></a><a href="#216" id="line216">     216</a> </span>                :          }                                                                                                         
-<span class="lineNum" id="container217"><a name="217"></a><a href="#217" id="line217">     217</a> </span>                :      }                                                                                                             
-<span class="lineNum" id="container218"><a name="218"></a><a href="#218" id="line218">     218</a> </span>                :                                                                                                                    
-<span class="lineNum" id="container219"><a name="219"></a><a href="#219" id="line219">     219</a> </span>                :     /**                                                                                                            
-<span class="lineNum" id="container220"><a name="220"></a><a href="#220" id="line220">     220</a> </span>                :     *                                                                                                              
-<span class="lineNum" id="container221"><a name="221"></a><a href="#221" id="line221">     221</a> </span>                :     */                                                                                                             
-<span class="lineNum" id="container222"><a name="222"></a><a href="#222" id="line222">     222</a> </span>                :     public function fetchErrors() {                                                                                
-<span class="lineNum" id="container223"><a name="223"></a><a href="#223" id="line223">     223</a> </span><span class="lineCov">              3 :         return $this-&gt;errors;                                                                                      </span>
-<span class="lineNum" id="container224"><a name="224"></a><a href="#224" id="line224">     224</a> </span>                :     }                                                                                                              
-<span class="lineNum" id="container225"><a name="225"></a><a href="#225" id="line225">     225</a> </span>                :                                                                                                                    
-<span class="lineNum" id="container226"><a name="226"></a><a href="#226" id="line226">     226</a> </span>                : }                                                                                                                  
+<span class="lineNum" id="container196"><a name="196"></a><a href="#196" id="line196">     196</a> </span><span class="lineCov">              1 :              return $this-&gt;respond(&quot;Invalid Request&quot;);                                                             </span>
+<span class="lineNum" id="container197"><a name="197"></a><a href="#197" id="line197">     197</a> </span>                :          }                                                                                                         
+<span class="lineNum" id="container198"><a name="198"></a><a href="#198" id="line198">     198</a> </span>                :                                                                                                                    
+<span class="lineNum" id="container199"><a name="199"></a><a href="#199" id="line199">     199</a> </span><span class="lineCov">              2 :          if ((empty($data['AccountSid']) &amp;&amp; !empty($this-&gt;twilioSid)) || $data['AccountSid'] != $this-&gt;twilioSid) {</span>
+<span class="lineNum" id="container200"><a name="200"></a><a href="#200" id="line200">     200</a> </span><span class="lineCov">              1 :             return $this-&gt;respond(&quot;Unable to authenticate Twilio service&quot;);                                        </span>
+<span class="lineNum" id="container201"><a name="201"></a><a href="#201" id="line201">     201</a> </span>                :          }                                                                                                         
+<span class="lineNum" id="container202"><a name="202"></a><a href="#202" id="line202">     202</a> </span>                :                                                                                                                    
+<span class="lineNum" id="container203"><a name="203"></a><a href="#203" id="line203">     203</a> </span><span class="lineCov">              2 :          if (empty($data['From']) || !$this-&gt;admin-&gt;isAdmin($data['From'])) {                                      </span>
+<span class="lineNum" id="container204"><a name="204"></a><a href="#204" id="line204">     204</a> </span><span class="lineCov">              1 :              return $this-&gt;respond(&quot;Request Rejected&quot;);                                                            </span>
+<span class="lineNum" id="container205"><a name="205"></a><a href="#205" id="line205">     205</a> </span>                :          }                                                                                                         
+<span class="lineNum" id="container206"><a name="206"></a><a href="#206" id="line206">     206</a> </span>                :                                                                                                                    
+<span class="lineNum" id="container207"><a name="207"></a><a href="#207" id="line207">     207</a> </span><span class="lineCov">              2 :          $response = $this-&gt;exec(new \IPLocker\Command($data['Body']));                                            </span>
+<span class="lineNum" id="container208"><a name="208"></a><a href="#208" id="line208">     208</a> </span>                :                                                                                                                    
+<span class="lineNum" id="container209"><a name="209"></a><a href="#209" id="line209">     209</a> </span><span class="lineCov">              2 :          if (!empty($response['Status'])) {                                                                        </span>
+<span class="lineNum" id="container210"><a name="210"></a><a href="#210" id="line210">     210</a> </span><span class="lineCov">              1 :             return $this-&gt;respond($response['Message']);                                                           </span>
+<span class="lineNum" id="container211"><a name="211"></a><a href="#211" id="line211">     211</a> </span>                :          } else {                                                                                                  
+<span class="lineNum" id="container212"><a name="212"></a><a href="#212" id="line212">     212</a> </span><span class="lineCov">              1 :              return $this-&gt;respond(&quot;Fail&quot;);                                                                        </span>
+<span class="lineNum" id="container213"><a name="213"></a><a href="#213" id="line213">     213</a> </span>                :          }                                                                                                         
+<span class="lineNum" id="container214"><a name="214"></a><a href="#214" id="line214">     214</a> </span>                :      }                                                                                                             
+<span class="lineNum" id="container215"><a name="215"></a><a href="#215" id="line215">     215</a> </span>                :                                                                                                                    
+<span class="lineNum" id="container216"><a name="216"></a><a href="#216" id="line216">     216</a> </span>                :     /**                                                                                                            
+<span class="lineNum" id="container217"><a name="217"></a><a href="#217" id="line217">     217</a> </span>                :     *                                                                                                              
+<span class="lineNum" id="container218"><a name="218"></a><a href="#218" id="line218">     218</a> </span>                :     */                                                                                                             
+<span class="lineNum" id="container219"><a name="219"></a><a href="#219" id="line219">     219</a> </span>                :     public function fetchErrors() {                                                                                
+<span class="lineNum" id="container220"><a name="220"></a><a href="#220" id="line220">     220</a> </span><span class="lineCov">              3 :         return $this-&gt;errors;                                                                                      </span>
+<span class="lineNum" id="container221"><a name="221"></a><a href="#221" id="line221">     221</a> </span>                :     }                                                                                                              
+<span class="lineNum" id="container222"><a name="222"></a><a href="#222" id="line222">     222</a> </span>                :                                                                                                                    
+<span class="lineNum" id="container223"><a name="223"></a><a href="#223" id="line223">     223</a> </span>                : }                                                                                                                  
 
 </pre>
         </td>
@@ -618,7 +615,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.3</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.6</a> and PHPUnit 3.6.12 at Mon Sep 17 11:36:20 EDT 2012.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 1.1.3</a> using <a href="http://www.php.net/" target="_top">PHP 5.4.6</a> and PHPUnit 3.6.12 at Tue Sep 18 16:47:17 EDT 2012.</td></tr>
     </table>
 
     <br />
@@ -813,68 +810,48 @@
           "body": "<ul><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
           "footer": ""
         },
-        "panel197": {
-          "header": "1 test covers line 197",
-          "body": "<ul><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
+        "panel199": {
+          "header": "2 tests cover line 199",
+          "body": "<ul><li class=\"testPassed\">LockerTest::testFailServiceTrapConditional</li><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
           "footer": ""
         },
         "panel200": {
-          "header": "2 tests cover line 200",
-          "body": "<ul><li class=\"testPassed\">LockerTest::testFailServiceTrapConditional</li><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
-          "footer": ""
-        },
-        "panel201": {
-          "header": "1 test covers line 201",
+          "header": "1 test covers line 200",
           "body": "<ul><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
           "footer": ""
         },
-        "panel202": {
-          "header": "1 test covers line 202",
-          "body": "<ul><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
-          "footer": ""
-        },
-        "panel205": {
-          "header": "2 tests cover line 205",
+        "panel203": {
+          "header": "2 tests cover line 203",
           "body": "<ul><li class=\"testPassed\">LockerTest::testFailServiceTrapConditional</li><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
           "footer": ""
         },
-        "panel206": {
-          "header": "1 test covers line 206",
+        "panel204": {
+          "header": "1 test covers line 204",
           "body": "<ul><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
           "footer": ""
         },
         "panel207": {
-          "header": "1 test covers line 207",
-          "body": "<ul><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
-          "footer": ""
-        },
-        "panel210": {
-          "header": "2 tests cover line 210",
+          "header": "2 tests cover line 207",
           "body": "<ul><li class=\"testPassed\">LockerTest::testFailServiceTrapConditional</li><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
           "footer": ""
         },
-        "panel211": {
-          "header": "1 test covers line 211",
+        "panel209": {
+          "header": "2 tests cover line 209",
+          "body": "<ul><li class=\"testPassed\">LockerTest::testFailServiceTrapConditional</li><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
+          "footer": ""
+        },
+        "panel210": {
+          "header": "1 test covers line 210",
           "body": "<ul><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
           "footer": ""
         },
         "panel212": {
           "header": "1 test covers line 212",
-          "body": "<ul><li class=\"testPassed\">LockerTest::testRunService</li></ul>",
-          "footer": ""
-        },
-        "panel214": {
-          "header": "1 test covers line 214",
           "body": "<ul><li class=\"testPassed\">LockerTest::testFailServiceTrapConditional</li></ul>",
           "footer": ""
         },
-        "panel215": {
-          "header": "1 test covers line 215",
-          "body": "<ul><li class=\"testPassed\">LockerTest::testFailServiceTrapConditional</li></ul>",
-          "footer": ""
-        },
-        "panel223": {
-          "header": "3 tests cover line 223",
+        "panel220": {
+          "header": "3 tests cover line 220",
           "body": "<ul><li class=\"testPassed\">LockerTest::testAuthenticateIPFail</li><li class=\"testPassed\">LockerTest::testAuthenticateIPStoreFail</li><li class=\"testPassed\">LockerTest::testEmptyErrors</li></ul>",
           "footer": ""
         },

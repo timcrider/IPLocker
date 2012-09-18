@@ -36,7 +36,7 @@ class Json implements \IPLocker\IPStore\StorageInterface
 	public function __construct($ipFile, $create=false) {
 		$this->ipFile = $ipFile;
 		
-		if ($create) {
+		if ($create && !file_exists($ipFile)) {
 			$this->resetData();
 		}
 		
@@ -120,7 +120,6 @@ class Json implements \IPLocker\IPStore\StorageInterface
 		}
 
 		$ipData = json_decode($data, true);
-
 		return (!is_array($ipData)) ? false : $ipData;
 	}
 
@@ -188,7 +187,7 @@ class Json implements \IPLocker\IPStore\StorageInterface
 	 * @return bool TRUE if the ip is allowed, FALSE if it is not
 	 */
 	public function ipAllowed($ip) {
-		return in_array(\IPLocker\Helpers::validIPAddress($ip), (array)$this->ipData);
+		return in_array($ip, (array)$this->ipData);
 	}
 
 	/**
@@ -214,23 +213,17 @@ class Json implements \IPLocker\IPStore\StorageInterface
 		$com = $command->fetchCommand();
 
         if ($com['action'] == 'toggle') {
-            $com['action'] = ($this->ipAllowed($com['params'][0])) ? 'remove' : 'add';
+            $com['action'] = ($this->ipAllowed($com['params'][0])) ? 'remove' : 'create';
         }
 
         if ($com['action'] == 'create') {
-            return ($this->create($com['params'][0]));
-/*
-                array('Status'  => true,'Message' => "Successfully added ip: {$com['params'][0]}")
-            :
+            return ($this->create($com['params'][0])) ?
+                array('Status'  => true,'Message' => "Successfully added ip: {$com['params'][0]}") :
                 array('Status'  => false,'Message' => "Unable to add ip: {$com['params'][0]}");
-*/
         } else {
-            return ($this->delete($com['params'][0]));
-/*
-                array('Status'  => true, 'Message' => "Successfully removed ip: {$com['params'][0]}")
-            :
+            return ($this->delete($com['params'][0])) ?
+                array('Status'  => true, 'Message' => "Successfully removed ip: {$com['params'][0]}") :
                 array('Status'  => false, 'Message' => "Unable to remove ip: {$com['params'][0]}");
-*/
         }
 
 	}

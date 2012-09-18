@@ -1,12 +1,12 @@
 
 
 Code Coverage Report 
-  2012-09-17 11:36:20
+  2012-09-18 16:47:17
 
  Summary: 
   Classes: 100.00% (6/6)
   Methods: 100.00% (52/52)
-  Lines:   100.00% (274/274)
+  Lines:   100.00% (278/278)
 
 \IPLocker::Command
   Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 79/ 79)
@@ -15,8 +15,8 @@ Code Coverage Report
 \IPLocker::Helpers
   Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 17/ 17)
 \IPLocker::Locker
-  Methods: 100.00% (14/14)   Lines: 100.00% ( 50/ 50)
+  Methods: 100.00% (14/14)   Lines: 100.00% ( 46/ 46)
 \IPLocker\AdminStore::Json
-  Methods: 100.00% (13/13)   Lines: 100.00% ( 50/ 50)
+  Methods: 100.00% (13/13)   Lines: 100.00% ( 54/ 54)
 \IPLocker\IPStore::Json
-  Methods: 100.00% (13/13)   Lines: 100.00% ( 61/ 61)
+  Methods: 100.00% (13/13)   Lines: 100.00% ( 65/ 65)
