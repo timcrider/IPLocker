@@ -15,7 +15,7 @@ class Locker
 	/**
 	 * @var string $version Current version of IPLocker
 	 */
-	protected $version = '0.0.10';
+	protected $version = '0.0.11';
 
 	/**
 	 * @var Services_Twilio $twilio Instance of Twilio service api

@@ -38,6 +38,7 @@ $twilio = array(
  */
 $adminIP    = '';
 $adminPhone = '';
+$adminName  = '';
 
 /**
 * Include event listeners
