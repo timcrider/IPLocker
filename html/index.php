@@ -20,7 +20,6 @@ require_once '_header.php';
 	
 	<p>IPLocker uses:</p>
 	<ul>
-		<li>Zend Framework</li>
 		<li>PEAR components 1.9.4</li>
 		<li>PHPUnit 3.6.12</li>
 		<li>Twitter Bootstrap</li>
