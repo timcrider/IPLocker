@@ -195,7 +195,7 @@ class Json implements \IPLocker\AdminStore\StorageInterface
 	 * @return array Stack of errors
 	 */
 	public function fetchErrors() {
-		return $this->errors;
+		return array_unique($this->errors);
 	}
 	
 	/**

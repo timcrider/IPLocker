@@ -2,6 +2,10 @@
 /**
  * Error reporting for debugging
  */
+
+/**
+* Debugging information
+*/
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
@@ -15,12 +19,14 @@ $twilio = array(
 );
 
 /**
- * Admin Overrides
+ * Default Admin and IP Access
  */
 $adminIP    = '';
 $adminPhone = '';
 
 /**
- * Load in a simple environment/bootstrap for this example
- */
-require_once dirname(__DIR__).'/environment.php';
+* Include event listeners
+*/
+if (file_exists(BASEDIR.'config/events.php')) {
+	require_once BASEDIR.'config/events.php';
+}

@@ -27,5 +27,61 @@ require_once '_header.php';
 	</ul>
 </div>
 
+<div>
+<?php
+if (!$admin->valid()) {
+	$admStatus = array(
+		'css' => 'error',
+		'message' => implode($admin->fetchErrors(), "<br />"),
+		'status'  => "Failed"
+	);
+} else {
+	$admStatus = array(
+		'css' => 'success',
+		'message' => "&nbsp;",
+		'status'  => "Success"
+	);
+}
+
+if (!$iplist->valid()) {
+	$ipStatus = array(
+		'css' => 'error',
+		'message' => implode($admin->fetchErrors(), "<br />"),
+		'status'  => "Failed"
+	);
+} else {
+	$ipStatus = array(
+		'css' => 'success',
+		'message' => "&nbsp;",
+		'status'  => "Success"
+	);
+}
+
+?>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Status</th>
+				<th>Test Name</th>
+				<th>Message</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="<?=$admStatus['css']?>">
+				<td><?=$admStatus['status']?></td>
+				<td>Administration Storage</td>
+				<td><?=$admStatus['message']?></td>
+			</tr>
+
+			<tr class="<?=$ipStatus['css']?>">
+				<td><?=$ipStatus['status']?></td>
+				<td>IP Access Storage</td>
+				<td><?=$ipStatus['message']?></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
 <?php
 require_once '_footer.php';

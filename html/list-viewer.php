@@ -21,7 +21,7 @@ require_once '_header.php';
 		</thead>
 		<tbody>
 <?php
-$admins = $admin->fetchAll();
+$admins = (array)$admin->fetchAll();
 asort($admins);
 foreach ($admins AS $number=>$admin) {
 $pretty = \IPLocker\Helpers::prettyNumber($number);
@@ -49,7 +49,7 @@ END_ROW;
 		</thead>
 		<tbody>
 <?php
-$ips = $iplist->fetchAll();
+$ips = (array)$iplist->fetchAll();
 sort($ips);
 foreach ($ips AS $ip) {
 print <<< END_ROW

@@ -203,7 +203,7 @@ class Json implements \IPLocker\IPStore\StorageInterface
 	*
 	*/
 	public function fetchErrors() {
-		return $this->errors;
+		return array_unique($this->errors);
 	}
 
 	/**
